@@ -1,0 +1,69 @@
+{
+  "scenario_id": "SC-VENDOR-RAW",
+  "test_cases": [
+    "TC-01"
+  ],
+  "description": "Heterogeneous raw events for the intake agent: normalise, validate, de-duplicate.",
+  "raw_events": [
+    {
+      "id": "RAW-1",
+      "format": "syslog",
+      "payload": "<187>Oct  3 10:02:01 AR-01 %LINK-3-UPDOWN: Interface GE-0/0/1, changed state to down"
+    },
+    {
+      "id": "RAW-2",
+      "format": "snmp_trap",
+      "payload": {
+        "trap": "linkDown",
+        "agent_addr": "10.0.2.1",
+        "ifDescr": "GE-0/0/1",
+        "ifOperStatus": 2,
+        "received_at": "2026-10-03 10:02:02"
+      }
+    },
+    {
+      "id": "RAW-3",
+      "format": "vendor_json",
+      "payload": {
+        "nodeName": "BS-101",
+        "alarmName": "BackhaulLoss",
+        "perceivedSeverity": "CRITICAL",
+        "eventTime": 1791021724,
+        "probableCause": "Backhaul connectivity lost"
+      }
+    },
+    {
+      "id": "RAW-4",
+      "format": "vendor_json",
+      "payload": {
+        "nodeName": "BS-102",
+        "alarmName": "BackhaulLoss",
+        "perceivedSeverity": "CRITICAL",
+        "eventTime": "not-a-timestamp"
+      }
+    },
+    {
+      "id": "RAW-5",
+      "format": "syslog",
+      "payload": "<187>Oct  3 10:02:01 AR-01 %LINK-3-UPDOWN: Interface GE-0/0/1, changed state to down"
+    },
+    {
+      "id": "RAW-6",
+      "format": "snmp_trap",
+      "payload": {
+        "trap": "linkDown",
+        "ifDescr": "GE-0/0/9",
+        "ifOperStatus": 2,
+        "received_at": "2026-10-03 10:03:00"
+      }
+    }
+  ],
+  "expected": {
+    "RAW-1": "normalised: AR-01 interface_down GE-0/0/1 critical",
+    "RAW-2": "same underlying event as RAW-1 (device resolved from IP 10.0.2.1); de-duplicate within window",
+    "RAW-3": "normalised: BS-101 backhaul_connectivity_lost critical (epoch converted to ISO)",
+    "RAW-4": "rejected/flagged: invalid timestamp",
+    "RAW-5": "exact duplicate of RAW-1",
+    "RAW-6": "flagged: missing device identity (no agent_addr/hostname) and unknown interface"
+  }
+}

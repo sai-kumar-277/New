@@ -1,0 +1,81 @@
+{
+  "scenario_id": "SC-CASCADE",
+  "test_cases": [
+    "TC-02",
+    "TC-05",
+    "TC-06"
+  ],
+  "description": "The AR-01 example from the assignment: interface down followed by downstream losses.",
+  "expected": {
+    "incident_count": 1,
+    "incident_id_example": "INC-NET-101",
+    "primary_event": "EVT-10425",
+    "consequential_events": [
+      "EVT-10426",
+      "EVT-10427",
+      "EVT-10428",
+      "EVT-10429"
+    ],
+    "suspected_fault_location": "AR-01 uplink/interface (GE-0/0/1 / LNK-CR01-AR01)",
+    "affected_elements": [
+      "BS-101",
+      "BS-102"
+    ],
+    "confidence": "high",
+    "topology_note": "BS-103 and E-101 also depend on AR-01 but raised no alarm. The system should flag them as 'potentially affected, unconfirmed' rather than ignore or assert them.",
+    "healthy_comparison": "BS-201..203 (via AR-02) are unaffected, which supports AR-01 as the fault domain.",
+    "historical_match": "INC-NET-032 (fiber uplink failure, three downstream sites)"
+  },
+  "alarms": [
+    {
+      "event_id": "EVT-10425",
+      "timestamp": "2026-10-03T10:02:01",
+      "device": "AR-01",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 (uplink to CR-01) changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10426",
+      "timestamp": "2026-10-03T10:02:04",
+      "device": "BS-101",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10427",
+      "timestamp": "2026-10-03T10:02:05",
+      "device": "BS-102",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10428",
+      "timestamp": "2026-10-03T10:02:07",
+      "device": "BS-101",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10429",
+      "timestamp": "2026-10-03T10:02:08",
+      "device": "BS-102",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    }
+  ]
+}

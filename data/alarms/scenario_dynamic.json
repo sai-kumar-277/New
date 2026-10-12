@@ -1,0 +1,34 @@
+{
+  "scenario_id": "SC-DYNAMIC",
+  "test_cases": [
+    "TC-08"
+  ],
+  "description": "Replay after SC-CASCADE while the incident is active: one related and one unrelated alarm.",
+  "active_incident_from": "SC-CASCADE",
+  "expected": {
+    "EVT-10430": "belongs to the existing incident (BS-103 depends on AR-01): update impact, recompute hypotheses, notify the engineer of the material change",
+    "EVT-10431": "independent (AR-02 CPU is not on the AR-01 failure path): separate or no incident"
+  },
+  "alarms": [
+    {
+      "event_id": "EVT-10430",
+      "timestamp": "2026-10-03T10:09:40",
+      "device": "BS-103",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10431",
+      "timestamp": "2026-10-03T10:10:15",
+      "device": "AR-02",
+      "alarm_type": "cpu_high",
+      "severity": "warning",
+      "interface": "CPU",
+      "description": "CPU utilisation 86% exceeds threshold 80%",
+      "status": "active"
+    }
+  ]
+}

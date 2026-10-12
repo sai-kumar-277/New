@@ -1,0 +1,35 @@
+{
+  "scenario_id": "SC-SINGLE",
+  "test_cases": [
+    "TC-01"
+  ],
+  "description": "Single AR-02 uplink goes down; the redundant uplink B stays up.",
+  "expected": {
+    "incident_count": 1,
+    "suspected_fault_location": "AR-02 GE-0/0/1 / LNK-CR01-AR02-A",
+    "service_impact": "none or degraded (redundant uplink available)",
+    "note": "The CR-01 far-end alarm should be recognised as the same fault, not a second incident."
+  },
+  "alarms": [
+    {
+      "event_id": "EVT-10300",
+      "timestamp": "2026-10-03T09:30:12",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 (uplink A to CR-01) changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10301",
+      "timestamp": "2026-10-03T09:30:12",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 (downlink to AR-02) changed state to down",
+      "status": "active"
+    }
+  ]
+}

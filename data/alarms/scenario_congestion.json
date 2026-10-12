@@ -1,0 +1,55 @@
+{
+  "scenario_id": "SC-CONGESTION",
+  "test_cases": [
+    "TC-04",
+    "TC-05"
+  ],
+  "description": "AR-02 uplink A fails at 10:50; traffic shifts to uplink B, which saturates (latency 180 ms, loss 8.5%, utilisation 96%, jitter 42 ms in telemetry_eval.csv).",
+  "expected": {
+    "root_cause_hypothesis": "traffic shift from failed link A causing congestion on link B",
+    "must_not_conclude": "high utilisation alone is the root cause without the link-A failure evidence",
+    "anomaly_entity": "LNK-CR01-AR02-B"
+  },
+  "alarms": [
+    {
+      "event_id": "EVT-10500",
+      "timestamp": "2026-10-03T10:50:03",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 (uplink A to CR-01) changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10501",
+      "timestamp": "2026-10-03T10:50:03",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 (downlink to AR-02) changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10502",
+      "timestamp": "2026-10-03T10:51:10",
+      "device": "CR-01",
+      "alarm_type": "utilization_high",
+      "severity": "warning",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 utilisation 96% exceeds threshold 85%",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-10503",
+      "timestamp": "2026-10-03T10:51:40",
+      "device": "AR-02",
+      "alarm_type": "packet_loss_high",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Packet loss 8.5% exceeds threshold 2%",
+      "status": "active"
+    }
+  ]
+}

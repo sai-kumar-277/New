@@ -1,0 +1,3035 @@
+{
+  "scenario_id": "SC-STORM",
+  "test_cases": [
+    "TC-03"
+  ],
+  "description": "AR-02 loses both uplinks at 14:15:00; 300 alarms in 90 s including repeats, plus 2 unrelated alarms.",
+  "expected": {
+    "total_alarms": 300,
+    "expected_incident_clusters": 3,
+    "clusters": [
+      {
+        "name": "AR-02 dual-uplink loss (storm)",
+        "primary_device": "AR-02",
+        "includes": "CR-01 far-end alarms, BS-201..203 consequences, all duplicates",
+        "affected_elements": [
+          "BS-201",
+          "BS-202",
+          "BS-203"
+        ],
+        "redundancy": "none left (both uplinks down)"
+      },
+      {
+        "name": "independent",
+        "event": "BS-101 high_temperature"
+      },
+      {
+        "name": "independent",
+        "event": "AR-01 fan_speed_low"
+      }
+    ],
+    "requirement": "Original alarms stay retrievable for audit; the incident view is de-duplicated."
+  },
+  "alarms": [
+    {
+      "event_id": "EVT-20001",
+      "timestamp": "2026-10-03T14:15:00",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20002",
+      "timestamp": "2026-10-03T14:15:00",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20003",
+      "timestamp": "2026-10-03T14:15:01",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20004",
+      "timestamp": "2026-10-03T14:15:01",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20005",
+      "timestamp": "2026-10-03T14:15:03",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20006",
+      "timestamp": "2026-10-03T14:15:04",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20007",
+      "timestamp": "2026-10-03T14:15:05",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20008",
+      "timestamp": "2026-10-03T14:15:05",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20009",
+      "timestamp": "2026-10-03T14:15:06",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20010",
+      "timestamp": "2026-10-03T14:15:06",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20011",
+      "timestamp": "2026-10-03T14:15:06",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20012",
+      "timestamp": "2026-10-03T14:15:06",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20013",
+      "timestamp": "2026-10-03T14:15:07",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20014",
+      "timestamp": "2026-10-03T14:15:07",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20015",
+      "timestamp": "2026-10-03T14:15:07",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20016",
+      "timestamp": "2026-10-03T14:15:08",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20017",
+      "timestamp": "2026-10-03T14:15:08",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20018",
+      "timestamp": "2026-10-03T14:15:08",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20019",
+      "timestamp": "2026-10-03T14:15:09",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20020",
+      "timestamp": "2026-10-03T14:15:09",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20021",
+      "timestamp": "2026-10-03T14:15:10",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20022",
+      "timestamp": "2026-10-03T14:15:10",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20023",
+      "timestamp": "2026-10-03T14:15:10",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20024",
+      "timestamp": "2026-10-03T14:15:10",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20025",
+      "timestamp": "2026-10-03T14:15:11",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20026",
+      "timestamp": "2026-10-03T14:15:12",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20027",
+      "timestamp": "2026-10-03T14:15:12",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20028",
+      "timestamp": "2026-10-03T14:15:12",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20029",
+      "timestamp": "2026-10-03T14:15:13",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20030",
+      "timestamp": "2026-10-03T14:15:13",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20031",
+      "timestamp": "2026-10-03T14:15:13",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20032",
+      "timestamp": "2026-10-03T14:15:13",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20033",
+      "timestamp": "2026-10-03T14:15:13",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20034",
+      "timestamp": "2026-10-03T14:15:13",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20035",
+      "timestamp": "2026-10-03T14:15:14",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20036",
+      "timestamp": "2026-10-03T14:15:14",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20037",
+      "timestamp": "2026-10-03T14:15:14",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20038",
+      "timestamp": "2026-10-03T14:15:14",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20039",
+      "timestamp": "2026-10-03T14:15:14",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20040",
+      "timestamp": "2026-10-03T14:15:15",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20041",
+      "timestamp": "2026-10-03T14:15:15",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20042",
+      "timestamp": "2026-10-03T14:15:15",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20043",
+      "timestamp": "2026-10-03T14:15:15",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20044",
+      "timestamp": "2026-10-03T14:15:15",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20045",
+      "timestamp": "2026-10-03T14:15:16",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20046",
+      "timestamp": "2026-10-03T14:15:16",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20047",
+      "timestamp": "2026-10-03T14:15:16",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20048",
+      "timestamp": "2026-10-03T14:15:16",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20049",
+      "timestamp": "2026-10-03T14:15:16",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20050",
+      "timestamp": "2026-10-03T14:15:17",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20051",
+      "timestamp": "2026-10-03T14:15:17",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20052",
+      "timestamp": "2026-10-03T14:15:17",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20053",
+      "timestamp": "2026-10-03T14:15:18",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20054",
+      "timestamp": "2026-10-03T14:15:18",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20055",
+      "timestamp": "2026-10-03T14:15:18",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20056",
+      "timestamp": "2026-10-03T14:15:18",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20057",
+      "timestamp": "2026-10-03T14:15:18",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20058",
+      "timestamp": "2026-10-03T14:15:18",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20059",
+      "timestamp": "2026-10-03T14:15:18",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20060",
+      "timestamp": "2026-10-03T14:15:19",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20061",
+      "timestamp": "2026-10-03T14:15:19",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20062",
+      "timestamp": "2026-10-03T14:15:19",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20063",
+      "timestamp": "2026-10-03T14:15:19",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20064",
+      "timestamp": "2026-10-03T14:15:20",
+      "device": "BS-101",
+      "alarm_type": "high_temperature",
+      "severity": "warning",
+      "interface": "CHASSIS",
+      "description": "Cabinet temperature 58C exceeds 55C",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20065",
+      "timestamp": "2026-10-03T14:15:20",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20066",
+      "timestamp": "2026-10-03T14:15:21",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20067",
+      "timestamp": "2026-10-03T14:15:22",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20068",
+      "timestamp": "2026-10-03T14:15:23",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20069",
+      "timestamp": "2026-10-03T14:15:24",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20070",
+      "timestamp": "2026-10-03T14:15:26",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20071",
+      "timestamp": "2026-10-03T14:15:26",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20072",
+      "timestamp": "2026-10-03T14:15:26",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20073",
+      "timestamp": "2026-10-03T14:15:26",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20074",
+      "timestamp": "2026-10-03T14:15:27",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20075",
+      "timestamp": "2026-10-03T14:15:27",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20076",
+      "timestamp": "2026-10-03T14:15:28",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20077",
+      "timestamp": "2026-10-03T14:15:28",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20078",
+      "timestamp": "2026-10-03T14:15:28",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20079",
+      "timestamp": "2026-10-03T14:15:29",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20080",
+      "timestamp": "2026-10-03T14:15:29",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20081",
+      "timestamp": "2026-10-03T14:15:29",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20082",
+      "timestamp": "2026-10-03T14:15:29",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20083",
+      "timestamp": "2026-10-03T14:15:29",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20084",
+      "timestamp": "2026-10-03T14:15:29",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20085",
+      "timestamp": "2026-10-03T14:15:30",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20086",
+      "timestamp": "2026-10-03T14:15:30",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20087",
+      "timestamp": "2026-10-03T14:15:30",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20088",
+      "timestamp": "2026-10-03T14:15:30",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20089",
+      "timestamp": "2026-10-03T14:15:30",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20090",
+      "timestamp": "2026-10-03T14:15:31",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20091",
+      "timestamp": "2026-10-03T14:15:31",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20092",
+      "timestamp": "2026-10-03T14:15:31",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20093",
+      "timestamp": "2026-10-03T14:15:31",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20094",
+      "timestamp": "2026-10-03T14:15:32",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20095",
+      "timestamp": "2026-10-03T14:15:33",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20096",
+      "timestamp": "2026-10-03T14:15:33",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20097",
+      "timestamp": "2026-10-03T14:15:33",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20098",
+      "timestamp": "2026-10-03T14:15:34",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20099",
+      "timestamp": "2026-10-03T14:15:36",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20100",
+      "timestamp": "2026-10-03T14:15:36",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20101",
+      "timestamp": "2026-10-03T14:15:36",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20102",
+      "timestamp": "2026-10-03T14:15:37",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20103",
+      "timestamp": "2026-10-03T14:15:37",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20104",
+      "timestamp": "2026-10-03T14:15:37",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20105",
+      "timestamp": "2026-10-03T14:15:37",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20106",
+      "timestamp": "2026-10-03T14:15:38",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20107",
+      "timestamp": "2026-10-03T14:15:38",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20108",
+      "timestamp": "2026-10-03T14:15:39",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20109",
+      "timestamp": "2026-10-03T14:15:39",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20110",
+      "timestamp": "2026-10-03T14:15:39",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20111",
+      "timestamp": "2026-10-03T14:15:40",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20112",
+      "timestamp": "2026-10-03T14:15:40",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20113",
+      "timestamp": "2026-10-03T14:15:40",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20114",
+      "timestamp": "2026-10-03T14:15:40",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20115",
+      "timestamp": "2026-10-03T14:15:40",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20116",
+      "timestamp": "2026-10-03T14:15:40",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20117",
+      "timestamp": "2026-10-03T14:15:40",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20118",
+      "timestamp": "2026-10-03T14:15:40",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20119",
+      "timestamp": "2026-10-03T14:15:41",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20120",
+      "timestamp": "2026-10-03T14:15:41",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20121",
+      "timestamp": "2026-10-03T14:15:41",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20122",
+      "timestamp": "2026-10-03T14:15:41",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20123",
+      "timestamp": "2026-10-03T14:15:42",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20124",
+      "timestamp": "2026-10-03T14:15:42",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20125",
+      "timestamp": "2026-10-03T14:15:42",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20126",
+      "timestamp": "2026-10-03T14:15:42",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20127",
+      "timestamp": "2026-10-03T14:15:42",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20128",
+      "timestamp": "2026-10-03T14:15:43",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20129",
+      "timestamp": "2026-10-03T14:15:43",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20130",
+      "timestamp": "2026-10-03T14:15:43",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20131",
+      "timestamp": "2026-10-03T14:15:43",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20132",
+      "timestamp": "2026-10-03T14:15:43",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20133",
+      "timestamp": "2026-10-03T14:15:43",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20134",
+      "timestamp": "2026-10-03T14:15:44",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20135",
+      "timestamp": "2026-10-03T14:15:44",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20136",
+      "timestamp": "2026-10-03T14:15:45",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20137",
+      "timestamp": "2026-10-03T14:15:45",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20138",
+      "timestamp": "2026-10-03T14:15:45",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20139",
+      "timestamp": "2026-10-03T14:15:46",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20140",
+      "timestamp": "2026-10-03T14:15:46",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20141",
+      "timestamp": "2026-10-03T14:15:46",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20142",
+      "timestamp": "2026-10-03T14:15:46",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20143",
+      "timestamp": "2026-10-03T14:15:47",
+      "device": "AR-01",
+      "alarm_type": "fan_speed_low",
+      "severity": "minor",
+      "interface": "FAN-2",
+      "description": "Fan 2 speed below threshold",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20144",
+      "timestamp": "2026-10-03T14:15:47",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20145",
+      "timestamp": "2026-10-03T14:15:47",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20146",
+      "timestamp": "2026-10-03T14:15:47",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20147",
+      "timestamp": "2026-10-03T14:15:47",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20148",
+      "timestamp": "2026-10-03T14:15:48",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20149",
+      "timestamp": "2026-10-03T14:15:48",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20150",
+      "timestamp": "2026-10-03T14:15:48",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20151",
+      "timestamp": "2026-10-03T14:15:48",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20152",
+      "timestamp": "2026-10-03T14:15:49",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20153",
+      "timestamp": "2026-10-03T14:15:49",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20154",
+      "timestamp": "2026-10-03T14:15:49",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20155",
+      "timestamp": "2026-10-03T14:15:49",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20156",
+      "timestamp": "2026-10-03T14:15:49",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20157",
+      "timestamp": "2026-10-03T14:15:49",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20158",
+      "timestamp": "2026-10-03T14:15:50",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20159",
+      "timestamp": "2026-10-03T14:15:50",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20160",
+      "timestamp": "2026-10-03T14:15:51",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20161",
+      "timestamp": "2026-10-03T14:15:51",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20162",
+      "timestamp": "2026-10-03T14:15:51",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20163",
+      "timestamp": "2026-10-03T14:15:51",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20164",
+      "timestamp": "2026-10-03T14:15:51",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20165",
+      "timestamp": "2026-10-03T14:15:52",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20166",
+      "timestamp": "2026-10-03T14:15:52",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20167",
+      "timestamp": "2026-10-03T14:15:52",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20168",
+      "timestamp": "2026-10-03T14:15:53",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20169",
+      "timestamp": "2026-10-03T14:15:53",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20170",
+      "timestamp": "2026-10-03T14:15:54",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20171",
+      "timestamp": "2026-10-03T14:15:55",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20172",
+      "timestamp": "2026-10-03T14:15:55",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20173",
+      "timestamp": "2026-10-03T14:15:55",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20174",
+      "timestamp": "2026-10-03T14:15:55",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20175",
+      "timestamp": "2026-10-03T14:15:56",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20176",
+      "timestamp": "2026-10-03T14:15:56",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20177",
+      "timestamp": "2026-10-03T14:15:56",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20178",
+      "timestamp": "2026-10-03T14:15:56",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20179",
+      "timestamp": "2026-10-03T14:15:56",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20180",
+      "timestamp": "2026-10-03T14:15:57",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20181",
+      "timestamp": "2026-10-03T14:15:57",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20182",
+      "timestamp": "2026-10-03T14:15:57",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20183",
+      "timestamp": "2026-10-03T14:15:57",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20184",
+      "timestamp": "2026-10-03T14:15:58",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20185",
+      "timestamp": "2026-10-03T14:15:58",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20186",
+      "timestamp": "2026-10-03T14:15:58",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20187",
+      "timestamp": "2026-10-03T14:15:58",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20188",
+      "timestamp": "2026-10-03T14:15:58",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20189",
+      "timestamp": "2026-10-03T14:15:58",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20190",
+      "timestamp": "2026-10-03T14:15:59",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20191",
+      "timestamp": "2026-10-03T14:15:59",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20192",
+      "timestamp": "2026-10-03T14:15:59",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20193",
+      "timestamp": "2026-10-03T14:15:59",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20194",
+      "timestamp": "2026-10-03T14:15:59",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20195",
+      "timestamp": "2026-10-03T14:16:00",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20196",
+      "timestamp": "2026-10-03T14:16:00",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20197",
+      "timestamp": "2026-10-03T14:16:00",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20198",
+      "timestamp": "2026-10-03T14:16:01",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20199",
+      "timestamp": "2026-10-03T14:16:01",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20200",
+      "timestamp": "2026-10-03T14:16:01",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20201",
+      "timestamp": "2026-10-03T14:16:02",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20202",
+      "timestamp": "2026-10-03T14:16:02",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20203",
+      "timestamp": "2026-10-03T14:16:02",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20204",
+      "timestamp": "2026-10-03T14:16:02",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20205",
+      "timestamp": "2026-10-03T14:16:02",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20206",
+      "timestamp": "2026-10-03T14:16:03",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20207",
+      "timestamp": "2026-10-03T14:16:03",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20208",
+      "timestamp": "2026-10-03T14:16:03",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20209",
+      "timestamp": "2026-10-03T14:16:03",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20210",
+      "timestamp": "2026-10-03T14:16:03",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20211",
+      "timestamp": "2026-10-03T14:16:04",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20212",
+      "timestamp": "2026-10-03T14:16:04",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20213",
+      "timestamp": "2026-10-03T14:16:04",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20214",
+      "timestamp": "2026-10-03T14:16:04",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20215",
+      "timestamp": "2026-10-03T14:16:05",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20216",
+      "timestamp": "2026-10-03T14:16:06",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20217",
+      "timestamp": "2026-10-03T14:16:06",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20218",
+      "timestamp": "2026-10-03T14:16:06",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20219",
+      "timestamp": "2026-10-03T14:16:06",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20220",
+      "timestamp": "2026-10-03T14:16:07",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20221",
+      "timestamp": "2026-10-03T14:16:07",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20222",
+      "timestamp": "2026-10-03T14:16:07",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20223",
+      "timestamp": "2026-10-03T14:16:08",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20224",
+      "timestamp": "2026-10-03T14:16:08",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20225",
+      "timestamp": "2026-10-03T14:16:08",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20226",
+      "timestamp": "2026-10-03T14:16:09",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20227",
+      "timestamp": "2026-10-03T14:16:09",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20228",
+      "timestamp": "2026-10-03T14:16:10",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20229",
+      "timestamp": "2026-10-03T14:16:10",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20230",
+      "timestamp": "2026-10-03T14:16:10",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20231",
+      "timestamp": "2026-10-03T14:16:11",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20232",
+      "timestamp": "2026-10-03T14:16:11",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20233",
+      "timestamp": "2026-10-03T14:16:11",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20234",
+      "timestamp": "2026-10-03T14:16:11",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20235",
+      "timestamp": "2026-10-03T14:16:11",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20236",
+      "timestamp": "2026-10-03T14:16:11",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20237",
+      "timestamp": "2026-10-03T14:16:12",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20238",
+      "timestamp": "2026-10-03T14:16:12",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20239",
+      "timestamp": "2026-10-03T14:16:13",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20240",
+      "timestamp": "2026-10-03T14:16:13",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20241",
+      "timestamp": "2026-10-03T14:16:13",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20242",
+      "timestamp": "2026-10-03T14:16:13",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20243",
+      "timestamp": "2026-10-03T14:16:13",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20244",
+      "timestamp": "2026-10-03T14:16:14",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20245",
+      "timestamp": "2026-10-03T14:16:14",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20246",
+      "timestamp": "2026-10-03T14:16:14",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20247",
+      "timestamp": "2026-10-03T14:16:15",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20248",
+      "timestamp": "2026-10-03T14:16:15",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20249",
+      "timestamp": "2026-10-03T14:16:15",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20250",
+      "timestamp": "2026-10-03T14:16:16",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20251",
+      "timestamp": "2026-10-03T14:16:16",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20252",
+      "timestamp": "2026-10-03T14:16:16",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20253",
+      "timestamp": "2026-10-03T14:16:16",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20254",
+      "timestamp": "2026-10-03T14:16:17",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20255",
+      "timestamp": "2026-10-03T14:16:17",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20256",
+      "timestamp": "2026-10-03T14:16:17",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20257",
+      "timestamp": "2026-10-03T14:16:17",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20258",
+      "timestamp": "2026-10-03T14:16:17",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20259",
+      "timestamp": "2026-10-03T14:16:18",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20260",
+      "timestamp": "2026-10-03T14:16:18",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20261",
+      "timestamp": "2026-10-03T14:16:18",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20262",
+      "timestamp": "2026-10-03T14:16:20",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20263",
+      "timestamp": "2026-10-03T14:16:20",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20264",
+      "timestamp": "2026-10-03T14:16:20",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20265",
+      "timestamp": "2026-10-03T14:16:21",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20266",
+      "timestamp": "2026-10-03T14:16:21",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20267",
+      "timestamp": "2026-10-03T14:16:21",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20268",
+      "timestamp": "2026-10-03T14:16:21",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20269",
+      "timestamp": "2026-10-03T14:16:21",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20270",
+      "timestamp": "2026-10-03T14:16:22",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20271",
+      "timestamp": "2026-10-03T14:16:22",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20272",
+      "timestamp": "2026-10-03T14:16:22",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20273",
+      "timestamp": "2026-10-03T14:16:22",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20274",
+      "timestamp": "2026-10-03T14:16:23",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20275",
+      "timestamp": "2026-10-03T14:16:23",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20276",
+      "timestamp": "2026-10-03T14:16:23",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20277",
+      "timestamp": "2026-10-03T14:16:23",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20278",
+      "timestamp": "2026-10-03T14:16:23",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20279",
+      "timestamp": "2026-10-03T14:16:23",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20280",
+      "timestamp": "2026-10-03T14:16:24",
+      "device": "AR-02",
+      "alarm_type": "interface_down",
+      "severity": "critical",
+      "interface": "GE-0/0/1",
+      "description": "Interface GE-0/0/1 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20281",
+      "timestamp": "2026-10-03T14:16:24",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20282",
+      "timestamp": "2026-10-03T14:16:24",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20283",
+      "timestamp": "2026-10-03T14:16:24",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20284",
+      "timestamp": "2026-10-03T14:16:25",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20285",
+      "timestamp": "2026-10-03T14:16:25",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20286",
+      "timestamp": "2026-10-03T14:16:26",
+      "device": "BS-201",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20287",
+      "timestamp": "2026-10-03T14:16:26",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20288",
+      "timestamp": "2026-10-03T14:16:26",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20289",
+      "timestamp": "2026-10-03T14:16:26",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20290",
+      "timestamp": "2026-10-03T14:16:26",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/3",
+      "description": "Interface GE-0/0/3 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20291",
+      "timestamp": "2026-10-03T14:16:27",
+      "device": "BS-202",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20292",
+      "timestamp": "2026-10-03T14:16:27",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20293",
+      "timestamp": "2026-10-03T14:16:27",
+      "device": "BS-203",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20294",
+      "timestamp": "2026-10-03T14:16:28",
+      "device": "BS-201",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20295",
+      "timestamp": "2026-10-03T14:16:28",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20296",
+      "timestamp": "2026-10-03T14:16:28",
+      "device": "BS-203",
+      "alarm_type": "backhaul_connectivity_lost",
+      "severity": "critical",
+      "interface": "BH-0",
+      "description": "Backhaul connectivity lost",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20297",
+      "timestamp": "2026-10-03T14:16:29",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20298",
+      "timestamp": "2026-10-03T14:16:29",
+      "device": "BS-202",
+      "alarm_type": "service_unavailable",
+      "severity": "critical",
+      "interface": "CELL-0",
+      "description": "Cell service unavailable",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20299",
+      "timestamp": "2026-10-03T14:16:29",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    },
+    {
+      "event_id": "EVT-20300",
+      "timestamp": "2026-10-03T14:16:29",
+      "device": "CR-01",
+      "alarm_type": "interface_down",
+      "severity": "major",
+      "interface": "GE-0/0/2",
+      "description": "Interface GE-0/0/2 changed state to down",
+      "status": "active"
+    }
+  ]
+}
